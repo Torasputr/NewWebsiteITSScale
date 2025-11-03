@@ -1,0 +1,746 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #14169d;
+    --secondary: #e2222a;
+    --gray: #ededed;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.submenu {
+    color: var(--primary);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--primary);
+}
+
+.footer-container i {
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.footer-container h5 {
+    color: white;
+}
+
+.location-header {
+    border-bottom: solid 2px white;
+}
+
+.footer-container h6 {
+    color: white;
+    padding-top: 4px;
+}
+
+.footer-container .logo {
+    color: white;
+    font-size: 24px;
+    border: solid 2px white;
+    border-radius: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10.5px;
+    padding-bottom: 10px;
+    transition-duration: 300ms;
+}
+
+.footer-container .logo:hover {
+    color: var(--primary);
+    background-color: white;
+    transition-duration: 300ms;
+}
+
+.footer-container .tiktok {
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.footer-container .youtube {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.footer-container .x {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.modal-dialog .footer-container {
+    background-color: var(--primary);
+}
+
+.logo-container img {
+    width: 50px;
+}
+
+.logo-container .title {
+    color: var(--primary);
+}
+
+.logo-container .subtitle {
+    color: var(--secondary);
+}
+
+.offcanvas {
+    width: 50%;
+}
+
+.offcanvas-header {
+    border-bottom: solid 2px var(--primary);
+}
+
+.offcanvas-title {
+    color: var(--primary);
+}
+
+.nav-link {
+    position: relative;
+    color: var(--primary);
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transition: 0.3s;
+    border-radius: 25px;
+    transform: scaleX(0);
+    background: var(--secondary);
+}
+
+.nav-link:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-link:hover {
+    color: var(--secondary);
+    transition-duration: 300ms;
+}
+
+.footer-input {
+    border: solid 2px white;
+}
+
+.footer-btn {
+    background-color: white;
+    border: solid 2px white;
+    color: var(--primary);
+    transition-duration: 300ms;
+}
+
+.footer-btn:hover {
+    background-color: var(--secondary);
+    border: solid 2px var(--secondary);
+    color: white;
+    scale: 110%;
+    transition-duration: 300ms;
+}
+
+.whatsapp-icon {
+    background-color: green;
+    transition-duration: 300ms;
+}
+
+.whatsapp-icon:hover {
+    scale: 110%;
+    transition-duration: 300ms;
+}
+
+/* Content */
+.content {
+    margin-top: 7rem;
+}
+
+.alert .alert-success {
+    margin-bottom: -2rem;
+}
+
+/* HOME */
+
+.home-highlight {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.highlight-video video {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Slider */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.highlight-swiper img {
+    width: 100%;
+    height: 35rem;
+    object-fit: scale-down;
+    object-position: center;
+}
+
+/* Kategori */
+.card {
+    background-color: var(--gray);
+    border: none;
+    transition-duration: 300ms;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: var(--primary);
+    scale: 105%;
+    transition-duration: 300ms;
+}
+
+.card .text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-category .container .card img {
+    width: 100%;
+}
+
+.home-category .submenu {
+    margin-top: 0px;
+}
+
+/* Selengkapnya */
+.selengkapnya {
+    color: var(--primary);
+    transition-duration: 300ms;
+    display: flex;
+    justify-content: end;
+}
+
+.selengkapnya:hover {
+    color: var(--secondary);
+    transition-duration: 300ms;
+}
+
+/* Artikel */
+.home-article img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.home-article .title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-article .right img {
+    height: 137px;
+}
+
+.cardmobile {
+    background-color: var(--gray);
+    height: 80px;
+}
+
+.cardmobile .title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Brand */
+.brand-container .submenu {
+    margin-bottom: 0px;
+}
+
+.brand-swiper img {
+    height: 160px;
+}
+
+/* Client */
+.client-container .submenu {
+    margin-top: 20px;
+    padding: 0px;
+}
+
+/* YouTube */
+.youtube-container {
+    background-color: var(--gray);
+}
+
+.youtube-container h1 {
+    color: var(--primary);
+}
+
+/* ABOUT */
+.banner-container {
+    background-size: cover;
+    background-position: center;
+    height: 18rem;
+    width: 100%;
+}
+
+.about {
+    background-image: url("../images/tentang/banner.webp");
+    color: white;
+}
+
+.artikel {
+    background-image: url("../images/artikel/artikelBg.jpg");
+    color: var(--primary);
+}
+
+.karir {
+    background-image: url("../images/karir/banner.webp");
+    background-position: 0px -216px;
+    background-repeat: no-repeat;
+}
+
+.karir-form-header {
+    background-color: #f2ecec;
+    background-size: cover;
+    height: 120px;
+}
+
+.gsc {
+    background-image: url("../images/gsc/banner1.png");
+}
+
+.milestones-section .image-container {
+    width: 160%;
+}
+
+.milestone-container .header {
+    color: var(--primary);
+}
+
+.milestone-container h6 {
+    text-align: justify;
+    font-weight: 400;
+}
+
+/* Milestone btn */
+.milestonebtn-container button {
+    background-color: white;
+    border: solid 2px var(--primary);
+    color: var(--primary);
+    transition-duration: 300ms;
+}
+
+.milestonebtn-container button:hover {
+    background-color: var(--primary);
+    color: white;
+    transition-duration: 300ms;
+}
+
+/* Visi Misi */
+.visimisi-container {
+    background-color: var(--gray);
+}
+
+.visimisi-container button {
+    width: 22%;
+    color: white;
+    font-size: 24px;
+    transition-duration: 300ms;
+}
+
+.visimisi-container button:hover {
+    scale: 110%;
+    transition-duration: 300ms;
+}
+
+.visi {
+    background-color: var(--primary);
+    border: solid 3px var(--primary);
+}
+
+.visi:hover {
+    background-color: white;
+    color: var(--primary);
+}
+
+.misi {
+    background-color: var(--secondary);
+    border: solid 3px var(--secondary);
+}
+
+.misi:hover {
+    background-color: white;
+    color: var(--secondary);
+}
+
+.visimisi-container .content-container h3 {
+    font-weight: bold;
+}
+
+.visi-text h3 {
+    color: var(--primary);
+}
+
+.misi-text h3 {
+    color: var(--secondary);
+}
+
+.visimisi-container .content-container h6 {
+    font-weight: normal;
+}
+
+/* Kebijakan Mutu */
+.kebmut-container .header {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.kebmut-container .text {
+    font-weight: normal;
+    text-align: justify;
+}
+
+.kebmut-container .list h6 {
+    font-weight: bold;
+}
+
+/* Sertifikat */
+.sertifikat-section {
+    background-color: var(--gray);
+}
+
+.sertifikat-section button {
+    border: none;
+    height: 18rem;
+    background-color: white;
+    transition-duration: 300ms;
+    width: 75%;
+}
+
+.sertifikat-section button:hover {
+    scale: 105%;
+    transition-duration: 300ms;
+}
+
+.mobile-sertif .swiper-container {
+    width: 100%; /* Full-width container */
+    height: 300px; /* Set height (adjust as needed) */
+    background-color: black;
+}
+
+.mobile-sertif .swiper-slide {
+    display: flex; /* Center content */
+    justify-content: center;
+    align-items: center;
+    height: 15rem; /* Slide takes full height */
+}
+
+.mobile-sertif .swiper-slide img {
+    display: flex;
+    padding: 20px;
+    max-width: 100%; /* Ensure image fits slide width */
+    max-height: 100%; /* Ensure image fits slide height */
+    object-fit: contain; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+/* ARTIKEL */
+.article-container img {
+    object-fit: cover;
+}
+
+.article-container .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-container .content-container {
+    color: black;
+}
+
+.article-container .card:hover {
+    color: var(--primary);
+}
+
+.article-detail .header {
+    border-bottom: solid 2px var(--primary);
+}
+
+.article-detail .container .header h5 {
+    color: var(--primary);
+}
+
+.contents .image-container {
+    height: 300px;
+}
+
+.contents .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contents .image-container h5 {
+    font-size: 14px;
+}
+
+.contents h6 {
+    text-align: justify;
+    font-weight: 400;
+}
+
+/* KARIR */
+.karir-card {
+    border: solid 1px var(--primary);
+    background-image: url("../images/karir/card.webp");
+    background-size: cover;
+    transition-duration: 300ms;
+}
+
+.karir-card:hover {
+    scale: 105%;
+    transition-duration: 300ms;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.karir-card .text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--primary);
+}
+
+.karir-card .btn {
+    background-color: var(--primary);
+    margin-top: 32px;
+    width: auto;
+    color: white;
+    border: solid 2px var(--primary);
+    transition-duration: 300ms;
+}
+
+.karir-card .btn:hover {
+    background-color: white;
+    color: var(--primary);
+    transition-duration: 300ms;
+}
+
+/* Kontak */
+.kontak-container .header {
+    border-bottom: solid 1px var(--primary);
+}
+
+.location button {
+    background-color: transparent;
+    border: solid 3px var(--primary);
+    border-radius: 4px;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    font-style: italic;
+    transition-duration: 300ms;
+    margin-bottom: 8px;
+}
+
+.location button:hover {
+    color: var(--primary);
+    background-color: white;
+    transition-duration: 300ms;
+}
+
+.location button.active {
+    color: var(--primary);
+    background-color: white;
+}
+
+.location .text {
+    font-size: 15px;
+    color: var(--primary);
+    font-weight: 400;
+    text-align: justify;
+}
+
+.jam-operasional .text {
+    font-style: italic;
+    color: var(--primary);
+    text-align: justify;
+}
+
+.layanan-kami .text {
+    color: var(--primary);
+    font-style: italic;
+    text-align: justify;
+}
+
+.layanan-kami .loc {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* GSC */
+.gsc .title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.info .icon {
+    font-size: 80px;
+}
+
+.service button {
+    background-color: var(--primary);
+    color: white;
+    border: solid 2px var(--primary);
+    transition-duration: 300ms;
+}
+
+.service button:hover {
+    background-color: white;
+    color: var(--primary);
+    scale: 110%;
+    transition-duration: 300ms;
+}
+
+.header-container h1 {
+    color: var(--secondary);
+}
+
+/* Produk */
+.item-detail-header {
+    border-bottom: solid 1px black;
+}
+.item-detail-header .text {
+    color: var(--primary);
+}
+
+.item-detail-btn {
+    background-color: var(--primary);
+    color: white;
+    border: solid 2px var(--primary);
+    transition-duration: 300ms;
+    margin-top: 10rem;
+}
+
+.item-detail-btn:hover {
+    background-color: white;
+    color: var(--primary);
+    transition-duration: 300ms;
+}
+
+.item-detail-youtube {
+    background-color: var(--gray);
+}
+
+.item-detail-youtube h1 {
+    color: var(--primary);
+}
+
+.prodindex image {
+    object-fit: contain;
+    width: 100%;
+}
+
+.prodindex h6 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Search */
+.searchresultdesktop {
+    position: fixed;
+    top: 100px; /* Adjust as needed */
+    right: 0px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-content {
+    border-bottom: solid 1px black;
+    transition-duration: 300ms;
+}
+
+.result-content:hover {
+    border-bottom: solid 2px var(--primary);
+    background-color: var(--primary);
+    color: white;
+    transition-duration: 300ms;
+}
+
+@media (max-width: 768px) {
+    .highlight-swiper img {
+        max-height: 10rem;
+    }
+
+    .selengkapnya {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .brand-swiper img {
+        height: 100px;
+    }
+
+    .karir {
+        background-position: 0 0px;
+        max-height: 10rem;
+    }
+
+    .banner-container h1 {
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}

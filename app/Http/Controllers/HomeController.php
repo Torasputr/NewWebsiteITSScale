@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Brand;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\News;
+use Illuminate\Http\Request;
+use App\Models\HomepageSlider;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Artisan;
+
+class HomeController extends Controller
+{
+    public function Home() {
+        Artisan::call('cache:clear');
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        $sliders = HomepageSlider::all();
+        $categories = Category::all();
+        $latestArticle = Article::latest('date')->first();
+        $articles = Article::where('id', '!=', $latestArticle->id)->latest('date')->take(4)->get();
+        $brands = Brand::all();
+        $latestNews = News::latest('date')->first();
+        $news = News::where('id', '!=', $latestNews->id)->latest('date')->take(4)->get();
+        return view('home.home', compact('sliders', 'categories', 'latestArticle', 'articles', 'brands', "news", "latestNews"));
+    }
+
+    public function YTRSS() {
+        $rssUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCd8KRACyffIjxQKbmquxgXg";
+        try {
+            $response = Http::get($rssUrl);
+            return response($response->body(), 200)->header('Content-Type', 'application/xml');
+        } catch(\Exception $e) {
+            return response()->json(['error' => 'Unable to fetch RSS feeds.'], 500);
+        }
+    }
+}
