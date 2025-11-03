@@ -13,7 +13,7 @@ class Item extends Model
     }
     public function subcategories()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function subcategory()

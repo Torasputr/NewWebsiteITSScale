@@ -1,26 +1,51 @@
 @extends('layout.master')
 @section('title', 'ITS Scale - ' . $category->name)
 @section('content')
-    <section class='prodindex'>
-        <h3 class='submenu pt-5'>{{ $category->name }}</h3>
-        <div class='row justify-content-center pt-lg-3 pb-lg-5                                   p-5 gap-5'>
-            @foreach ($items as $item)
-                <a href="/produk/{{ $category->alt }}/{{ $item->alt }}" class='col-lg-3'>
-                    <div class='card p-3'>
-                        <img class='rounded'
-                            style="width: 100%; height: 200px; object-fit: scale-down; background-color: white; object-position: center;"
-                            src="{{ asset($item->image) }}" alt="">
-                        <div class='d-flex justify-content-between align-items-center pt-3'>
-                            <h5 class='text'>{{ $item->brand->name }} {{ $item->name }}</h5>
-                            <img style="height: 40px" src="{{ asset($item->brand->image) }}"
-                                alt="{{ asset($item->brand->alt) }}">
-                        </div>
-                        <div>
-                            <h6 class='fw-light'>{{ $item->subcategory->name }} | {{ $category->name }}</h6>
-                        </div>
+
+<section class="prodindex py-5 px-4 px-md-5">
+    {{-- === Judul Kategori === --}}
+    <div class="text-center mb-5">
+        <h2 class="fw-bold mb-2">{{ $category->name }}</h2>
+        <p class="text-muted">Temukan berbagai produk dalam kategori ini</p>
+    </div>
+
+    {{-- === Loop Subkategori (grouped) === --}}
+    @foreach ($grouped as $subcategoryName => $items)
+        <div class="subcategory-section mb-5 pb-4 border-bottom">
+            {{-- Header Subkategori --}}
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-semibold mb-0">{{ $subcategoryName }}</h4>
+                <span class="text-muted small">{{ $items->count() }} produk</span>
+            </div>
+
+            {{-- Grid produk --}}
+            <div class="row g-4 justify-content-center">
+                @foreach ($items as $item)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <a href="/produk/{{ $category->alt }}/{{ $item->alt }}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm border-0 hover-card p-3">
+
+                                {{-- Image Wrapper --}}
+                                <div class="image-wrapper mb-3">
+                                    <img src="{{ asset($item->image) }}" alt="{{ $item->alt }}">
+                                </div>
+
+                                {{-- Info produk --}}
+                                <div class="card-body p-0">
+                                    <h6 class="fw-semibold mb-1">
+                                        {{ $item->brand->name ?? '' }} {{ $item->name }}
+                                    </h6>
+                                    <p class="text-muted small mb-0">
+                                        {{ $subcategoryName }} | {{ $category->name }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </section>
+    @endforeach
+</section>
+
 @endsection

@@ -9,6 +9,6 @@ class Subcategory extends Model
 {
     use HasFactory;
     public function items() {
-        return $this->belongsTo(Item::class);
+        return $this->hasMany(Item::class);
     }
 }

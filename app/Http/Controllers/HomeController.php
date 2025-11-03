@@ -30,11 +30,24 @@ class HomeController extends Controller
 
     public function YTRSS() {
         $rssUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCd8KRACyffIjxQKbmquxgXg";
+
         try {
-            $response = Http::get($rssUrl);
+            $response = Http::timeout(10)->get($rssUrl);
+
+            if ($response->failed()) {
+                \Log::error('YouTube RSS Fetch Failed: '.$response->status().' - '.$response->body());
+                return response()->json([
+                    'error' => 'Failed to fetch YouTube RSS feed.',
+                    'status' => $response->status(),
+                    'body' => $response->body(),
+                ], 500);
+            }
+
             return response($response->body(), 200)->header('Content-Type', 'application/xml');
-        } catch(\Exception $e) {
-            return response()->json(['error' => 'Unable to fetch RSS feeds.'], 500);
+
+        } catch (\Exception $e) {
+            \Log::error('YouTube RSS Exception: '.$e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 }

@@ -652,46 +652,65 @@ footer {
 }
 
 /* Produk */
-.item-detail-header {
-    border-bottom: solid 1px black;
-}
-.item-detail-header .text {
-    color: var(--primary);
-}
-
-.item-detail-btn {
-    background-color: var(--primary);
-    color: white;
-    border: solid 2px var(--primary);
-    transition-duration: 300ms;
-    margin-top: 10rem;
-}
-
-.item-detail-btn:hover {
+.prodindex .image-wrapper {
     background-color: white;
-    color: var(--primary);
-    transition-duration: 300ms;
-}
-
-.item-detail-youtube {
-    background-color: var(--gray);
-}
-
-.item-detail-youtube h1 {
-    color: var(--primary);
-}
-
-.prodindex image {
-    object-fit: contain;
-    width: 100%;
-}
-
-.prodindex h6 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    white-space: nowrap;
+    height: 220px; /* tinggi seragam */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    border: 1px solid #eee;
+}
+
+.prodindex .image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.prodindex .card:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Card styling (melengkapi style sebelumnya) */
+.prodindex .card {
+    background-color: var(--gray);
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.prodindex .card:hover {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Subkategori heading */
+.prodindex .subcategory-section h4 {
+    color: var(--primary);
+    font-weight: bold;
+    border-left: solid 5px var(--secondary);
+    padding-left: 10px;
+}
+
+/* Card text */
+.prodindex .card h6 {
+    color: var(--primary);
+}
+
+.prodindex .card:hover h6 {
+    color: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .prodindex .image-wrapper {
+        height: 180px;
+    }
 }
 
 /* Search */
