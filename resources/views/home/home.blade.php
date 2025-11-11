@@ -3,15 +3,14 @@
 @section('content')
     {{-- Highlight --}}
     <section class="home-highlight">
-        @foreach ($sliders as $slider)
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="{{ asset("videos/Video1.mp4") }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        @endforeach
+        <div class="highlight-video">
+            <video autoplay loop muted playsinline>
+            <source src="{{ asset('videos/Video1.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+        </div>
     </section>
+
 
     {{-- Brands Section --}}
     <section class='brand-container'>

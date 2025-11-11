@@ -15,10 +15,16 @@ class ProductController extends Controller
 
     public function index($c_alt) {
         $category = Category::where('alt', $c_alt)->firstOrFail();
-        $items = Item::with(["subcategory", "brand"])->where("category_id", $category->id)->get();
-        $grouped = $items->groupBy(function($item) {
-            return $item->subcategory->name ?? "Tanpa Subkategori";
-        });
+        $items = Item::with(['subcategory', 'brand'])
+            ->where('items.category_id', $category->id)
+            ->leftJoin('subcategories', 'items.subcategory_id', '=', 'subcategories.id')
+            ->orderBy('subcategories.name', 'asc')   // subcategory alphabet
+            ->orderBy('items.brand_id', 'asc')       // brand id kecil dulu
+            ->select('items.*')
+            ->get();
+
+        $grouped = $items->groupBy(fn($item) => $item->subcategory->name ?? 'Tanpa Subkategori');
+
         return view("product.index", compact("category", "grouped"));
     }
     public function detail($c_alt, $i_alt) {

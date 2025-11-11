@@ -182,14 +182,39 @@ footer {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+/* Styling video */
 .highlight-video video {
     width: 100%;
     max-width: 1200px;
+    height: auto; /* penting biar proporsional */
     border-radius: 12px;
     object-fit: cover;
     display: block;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .highlight-video video {
+        max-width: 90%;
+        border-radius: 10px;
+    }
+}
+
+/* HP (mobile) */
+@media (max-width: 576px) {
+    .highlight-video video {
+        max-width: 100%;
+        border-radius: 0;
+        object-fit: contain; /* biar nggak kepotong di layar kecil */
+    }
 }
 
 /* Slider */
@@ -711,6 +736,26 @@ footer {
     .prodindex .image-wrapper {
         height: 180px;
     }
+}
+
+/* === Tombol Cek Brosur === */
+.item-detail-btn {
+    background-color: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+    border-radius: 9999px; /* full rounded pill */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.item-detail-btn:hover {
+    background-color: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    transform: scale(1.05);
+    text-decoration: none;
 }
 
 /* Search */
