@@ -3,11 +3,33 @@
 @section('content')
     {{-- Highlight --}}
     <section class="home-highlight">
+        {{-- Highlight video placeholder (reactivate once the new footage is ready) --}}
+        {{--
         <div class="highlight-video">
             <video autoplay loop muted playsinline>
-            <source src="{{ asset('videos/Video1.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
+                <source src="{{ asset('videos/Video1.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
+        </div>
+        --}}
+
+        <div class="swiper highlight-swiper">
+            <div class="swiper-wrapper">
+                @forelse ($sliders as $slider)
+                    <div class="swiper-slide">
+                        <a href="{{ $slider->link ?? '#' }}" class="highlight-slide-link">
+                            <img src="{{ asset($slider->image) }}" alt="{{ $slider->alt }}">
+                        </a>
+                    </div>
+                @empty
+                    <div class="swiper-slide">
+                        <div class="highlight-empty">
+                            Konten highlight belum tersedia.
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -47,153 +69,49 @@
                 </div>
             </div>
         </section>
-        {{-- Article Section --}}
-        <section class='home-article'>
-            {{-- Article Submenu --}}
-            <h3 class='submenu'>Artikel</h3>
-            {{-- Article Desktop --}}
-            <div class='d-none d-lg-block'>
-                <div class='row justify-content-center'>
-                    <div class='col-6 flex-grow'>
-                        <a href="/artikel/{{ $latestArticle->id }}">
-                            <div class='card left p-3'>
-                                <div class>
-                                    <img class='rounded' style="width: 100%" src="{{ asset($latestArticle->thumbnail) }}"
-                                        alt="">
-                                </div>
-                                <div class='pt-3'>
-                                    <h4 class='title'>{{ $latestArticle->title }}</h4>
-                                    <h6 class='text-end fw-light'>{{ $latestArticle->date }}</h6>
-                                </div>
+        {{-- Article & News Section --}}
+        <section class='home-article-news'>
+            <div class="row g-4 article-news-row {{ $latestNews ? 'row-cols-1 row-cols-lg-2' : '' }}">
+                <div class="d-flex flex-column {{ $latestNews ? 'col' : 'col-12' }}">
+                    <div class='d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3'>
+                        <h3 class='submenu mb-0 text-start text-lg-center flex-grow-1'>Artikel</h3>
+                        <a class='fw-bold selengkapnya mb-0' href="/artikel">Selengkapnya -></a>
+                    </div>
+                    @if ($latestArticle)
+                        <a href="/artikel/{{ $latestArticle->id }}" class="card article-news-card p-3 flex-fill">
+                            <div class="article-news-thumb rounded mb-3">
+                                <img src="{{ asset($latestArticle->thumbnail) }}" alt="{{ $latestArticle->title }}">
+                            </div>
+                            <div>
+                                <h4 class='title mb-2'>{{ $latestArticle->title }}</h4>
+                                <h6 class='text-end fw-light mb-0'>{{ $latestArticle->date }}</h6>
+                            </div>
+                        </a>
+                    @else
+                        <div class="article-news-empty">
+                            <p class="mb-0 text-center">Belum ada artikel terbaru.</p>
+                        </div>
+                    @endif
+                </div>
+                @if ($latestNews)
+                    <div class="col d-flex flex-column">
+                        <div class='d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3'>
+                            <h3 class='submenu mb-0 text-start text-lg-center flex-grow-1'>Berita</h3>
+                            <a class='fw-bold selengkapnya mb-0' href="/berita">Selengkapnya -></a>
+                        </div>
+                        <a href="/berita/{{ $latestNews->id }}" class="card article-news-card p-3 flex-fill">
+                            <div class="article-news-thumb rounded mb-3">
+                                <img src="{{ asset($latestNews->thumbnail) }}" alt="{{ $latestNews->title }}">
+                            </div>
+                            <div>
+                                <h4 class='title mb-2'>{{ $latestNews->title }}</h4>
+                                <h6 class='text-end fw-light mb-0'>{{ $latestNews->date }}</h6>
                             </div>
                         </a>
                     </div>
-                    <div class='col-6'>
-                        <div class='row'>
-                            @foreach ($articles as $article)
-                                <div class='col-6 mb-4'>
-                                    <a href="/artikel/{{ $article->id }}">
-                                        <div class='card right p-3'>
-                                            <img class='rounded' src="{{ asset($article->thumbnail) }}" alt="">
-                                            <div class='pt-3'>
-                                                <h5 class='title'>{{ $article->title }}</h5>
-                                                <h6 class='text-end fw-light'>{{ $article->date }}</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                {{-- Selengkapnya --}}
-                <div class=''>
-                    <a class='fw-bold selengkapnya' href="/artikel">Selengkapnya -></a>
-                </div>
+                @endif
             </div>
-            {{-- Article Mobile --}}
-            <div class='d-lg-none d-block'>
-                <a href="/artikel/{{ $latestArticle->id }}">
-                    <div class='cardmobile rounded d-flex align-items-center gap-3 p-2 mb-2'>
-                        <img class='rounded' style='height: 100%; width: 50px' src="{{ asset($latestArticle->thumbnail) }}"
-                            alt={{ $latestArticle->alt }}>
-                        <div style="width: 75%;">
-                            <h6 class='fw-bold title fs-7'>{{ $latestArticle->title }}</h6>
-                            <h6 class='text-end fw-light fs-7'>{{ $latestArticle->date }}</h6>
-                        </div>
-                    </div>
-                </a>
-                @foreach ($articles as $article)
-                    <a href="/artikel/{{ $article->id }}">
-                        <div class='cardmobile rounded d-flex align-items-center gap-3 p-2 mb-2'>
-                            <img class='rounded' style='height: 100%; width: 50px' src="{{ asset($article->thumbnail) }}"
-                                alt="">
-                            <div style='width: 75%'>
-                                <h6 class='fw-bold title'>{{ $article->title }}</h6>
-                                <h6 class='text-end fw-light'>{{ $article->date }}</h6>
-                            </div>
-                        </div>
-                        <div>
-                    </a>
-                @endforeach
-                <a class='selengkapnya fw-bold' href="/article">Selengkapnya -></a>
-            </div>
-        </div>
-    </section>
-    {{-- News Section --}}
-    <section class='home-news'>
-        {{-- News Submenu --}}
-        <h3 class='submenu'>Berita</h3>
-
-        {{-- News Desktop --}}
-        <div class='d-none d-lg-block'>
-            <div class='row justify-content-center'>
-                <div class='col-6 flex-grow'>
-                    <a href="/berita/{{ $latestNews->id }}">
-                        <div class='card left p-3'>
-                            <div>
-                                <img class='rounded' style="width: 100%" src="{{ asset($latestNews->thumbnail) }}" alt="">
-                            </div>
-                            <div class='pt-3'>
-                                <h4 class='title'>{{ $latestNews->title }}</h4>
-                                <h6 class='text-end fw-light'>{{ $latestNews->date }}</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class='col-6'>
-                    <div class='row'>
-                        @foreach ($news as $item)
-                            <div class='col-6 mb-4'>
-                                <a href="/berita/{{ $item->id }}">
-                                    <div class='card right p-3'>
-                                        <img class='rounded' src="{{ asset($item->thumbnail) }}" alt="">
-                                        <div class='pt-3'>
-                                            <h5 class='title'>{{ $item->title }}</h5>
-                                            <h6 class='text-end fw-light'>{{ $item->date }}</h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            {{-- Selengkapnya --}}
-            <div>
-                <a class='fw-bold selengkapnya' href="/berita">Selengkapnya -></a>
-            </div>
-        </div>
-
-        {{-- News Mobile --}}
-        <div class='d-lg-none d-block'>
-            <a href="/berita/{{ $latestNews->id }}">
-                <div class='cardmobile rounded d-flex align-items-center gap-3 p-2 mb-2'>
-                    <img class='rounded' style='height: 100%; width: 50px' src="{{ asset($latestNews->thumbnail) }}" alt="">
-                    <div style="width: 75%;">
-                        <h6 class='fw-bold title fs-7'>{{ $latestNews->title }}</h6>
-                        <h6 class='text-end fw-light fs-7'>{{ $latestNews->date }}</h6>
-                    </div>
-                </div>
-            </a>
-
-            @foreach ($news as $item)
-                <a href="/berita/{{ $item->id }}">
-                    <div class='cardmobile rounded d-flex align-items-center gap-3 p-2 mb-2'>
-                        <img class='rounded' style='height: 100%; width: 50px' src="{{ asset($item->thumbnail) }}" alt="">
-                        <div style='width: 75%'>
-                            <h6 class='fw-bold title'>{{ $item->title }}</h6>
-                            <h6 class='text-end fw-light'>{{ $item->date }}</h6>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
-
-            <a class='selengkapnya fw-bold' href="/berita">Selengkapnya -></a>
-        </div>
-    </section>
+        </section>
 
     {{-- Clients Section --}}
     <section class='client-container'>

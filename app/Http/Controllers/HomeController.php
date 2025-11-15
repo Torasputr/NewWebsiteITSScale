@@ -21,11 +21,9 @@ class HomeController extends Controller
         $sliders = HomepageSlider::all();
         $categories = Category::all();
         $latestArticle = Article::latest('date')->first();
-        $articles = Article::where('id', '!=', $latestArticle->id)->latest('date')->take(4)->get();
         $brands = Brand::all();
         $latestNews = News::latest('date')->first();
-        $news = News::where('id', '!=', $latestNews->id)->latest('date')->take(4)->get();
-        return view('home.home', compact('sliders', 'categories', 'latestArticle', 'articles', 'brands', "news", "latestNews"));
+        return view('home.home', compact('sliders', 'categories', 'latestArticle', 'brands', "latestNews"));
     }
 
     public function YTRSS() {

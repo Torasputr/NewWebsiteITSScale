@@ -178,42 +178,74 @@ footer {
 /* HOME */
 
 .home-highlight {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
-/* Styling video */
+/* Highlight video placeholder (reactivate with markup if needed) */
+/*
+.highlight-video {
+    width: 100%;
+    height: 100vh;
+}
+
 .highlight-video video {
     width: 100%;
-    max-width: 1200px;
-    height: auto; /* penting biar proporsional */
-    border-radius: 12px;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
+*/
 
-/* === RESPONSIVE BREAKPOINTS === */
+.highlight-swiper {
+    width: 100%;
+    height: 75vh;
+}
 
-/* Tablet */
+.highlight-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.highlight-slide-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.highlight-swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.highlight-empty {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+}
+
 @media (max-width: 992px) {
-    .highlight-video video {
-        max-width: 90%;
-        border-radius: 10px;
+    .highlight-swiper,
+    .highlight-empty {
+        height: 60vh;
     }
 }
 
 /* HP (mobile) */
 @media (max-width: 576px) {
-    .highlight-video video {
-        max-width: 100%;
-        border-radius: 0;
-        object-fit: contain; /* biar nggak kepotong di layar kecil */
+    .highlight-swiper,
+    .highlight-empty {
+        height: 40vh;
     }
 }
 
@@ -240,13 +272,6 @@ footer {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-}
-
-.highlight-swiper img {
-    width: 100%;
-    height: 35rem;
-    object-fit: scale-down;
-    object-position: center;
 }
 
 /* Kategori */
@@ -293,32 +318,58 @@ footer {
 }
 
 /* Artikel */
-.home-article img {
-    height: 400px;
-    object-fit: cover;
+.home-article-news .submenu {
+    margin-bottom: 0;
 }
 
-.home-article .title {
+.article-news-row {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.home-article .right img {
-    height: 137px;
-}
-
-.cardmobile {
+.article-news-card {
     background-color: var(--gray);
-    height: 80px;
+    border: none;
+    height: 100%;
+    transition: all 0.3s ease;
 }
 
-.cardmobile .title {
+.article-news-card:hover {
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+.article-news-card .title {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.article-news-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.article-news-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.article-news-empty {
+    background-color: var(--gray);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Brand */
