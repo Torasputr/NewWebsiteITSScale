@@ -81,6 +81,9 @@
                         <li class="nav-item pb-5 pb-lg-0">
                             <a class="nav-link" href="/gsc">Servis & Garansi</a>
                         </li>
+                        <li class="nav-item pb-4 pb-lg-0 d-flex align-items-center">
+                            <div id="google_translate_element" class="translate-container"></div>
+                        </li>
                     </ul>
                     {{-- Search Bar --}}
                     <div class='mt-4 mt-lg-0'>
@@ -184,6 +187,17 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     {{-- FontAwesome JS --}}
     <script src="https://kit.fontawesome.com/ef25a92f55.js" crossorigin="anonymous"></script>
+    {{-- Google Translate --}}
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id',
+                includedLanguages: 'zh-CN,en,ja',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     {{-- Master js --}}
     <script src={{ asset('js/master.js') }}></script>
 </body>

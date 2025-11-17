@@ -24,7 +24,6 @@ Route::get('/berita/{id}', [NewsController::class, 'detail']);
 
 // Produk
 Route::get('/produk', [ProductController::class, 'product']);
-Route::get('/produk/{c_alt}', [ProductController::class, 'index']);
 Route::get('/produk/{c_alt}/{i_alt}', [ProductController::class, 'detail']);
 
 // Karir

@@ -6,7 +6,7 @@
         <div class='row justify-content-evenly'>
             @foreach ($categories as $category)
                 <div class='col-lg-4 col-12 mb-2 mb-lg-4'>
-                    <a href="/produk/{{ $category->alt }}">
+                    <a href="{{ url('/produk') }}?category={{ $category->id }}">
                         <div class='card p-3'>
                             <div class='rounded'>
                                 <img style="width: 100%" class='rounded' src={{ asset($category->image) }} alt="">

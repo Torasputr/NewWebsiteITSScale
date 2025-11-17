@@ -365,8 +365,8 @@ footer {
 .article-news-empty {
     background-color: var(--gray);
     border-radius: 12px;
-    padding: 2rem;
-    height: 100%;
+    padding: 1rem 1.25rem;
+    min-height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -765,6 +765,23 @@ footer {
     transform: translateY(-5px);
 }
 
+.prodindex .product-filter .form-select {
+    border-radius: 999px;
+    padding: 0.65rem 1.25rem;
+}
+
+.prodindex .product-filter .btn {
+    border-radius: 999px;
+    padding: 0.65rem 1.25rem;
+    font-weight: 600;
+}
+
+.prodindex .product-filter label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 /* Subkategori heading */
 .prodindex .subcategory-section h4 {
     color: var(--primary);
@@ -858,4 +875,15 @@ footer {
     .banner-container h1 {
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     }
+}
+
+/* Google Translate widget tweaks */
+.translate-container .goog-te-gadget {
+    height: 100%;
+}
+
+.translate-container .goog-te-combo {
+    border-radius: 999px;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid #ced4da;
 }

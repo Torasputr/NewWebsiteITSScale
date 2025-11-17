@@ -54,7 +54,7 @@
             <div class='container'>
                 <div class='row justify-content-center'>
                     @foreach ($categories as $category)
-                        <a href="/produk/{{ $category->alt }}" class='col-lg-4 col-12 mb-2 mb-lg-4'>
+                        <a href="{{ url('/produk') }}?category={{ $category->id }}" class='col-lg-4 col-12 mb-2 mb-lg-4'>
                             <div class='card p-3'>
                                 <div class='rounded'>
                                     <img class='rounded' src={{ asset($category->image) }} alt="">
@@ -72,10 +72,9 @@
         {{-- Article & News Section --}}
         <section class='home-article-news'>
             <div class="row g-4 article-news-row {{ $latestNews ? 'row-cols-1 row-cols-lg-2' : '' }}">
-                <div class="d-flex flex-column {{ $latestNews ? 'col' : 'col-12' }}">
-                    <div class='d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3'>
-                        <h3 class='submenu mb-0 text-start text-lg-center flex-grow-1'>Artikel</h3>
-                        <a class='fw-bold selengkapnya mb-0' href="/artikel">Selengkapnya -></a>
+                <div class="d-flex flex-column {{ $latestNews ? 'col' : 'col-12 col-lg-6 mx-auto' }}">
+                    <div class='text-start text-lg-center mb-3'>
+                        <h3 class='submenu mb-0'>Artikel</h3>
                     </div>
                     @if ($latestArticle)
                         <a href="/artikel/{{ $latestArticle->id }}" class="card article-news-card p-3 flex-fill">
@@ -92,12 +91,14 @@
                             <p class="mb-0 text-center">Belum ada artikel terbaru.</p>
                         </div>
                     @endif
+                    <div class="text-end mt-3">
+                        <a class='fw-bold selengkapnya' href="/artikel">Selengkapnya -></a>
+                    </div>
                 </div>
                 @if ($latestNews)
                     <div class="col d-flex flex-column">
-                        <div class='d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3'>
-                            <h3 class='submenu mb-0 text-start text-lg-center flex-grow-1'>Berita</h3>
-                            <a class='fw-bold selengkapnya mb-0' href="/berita">Selengkapnya -></a>
+                        <div class='text-start text-lg-center mb-3'>
+                            <h3 class='submenu mb-0'>Berita</h3>
                         </div>
                         <a href="/berita/{{ $latestNews->id }}" class="card article-news-card p-3 flex-fill">
                             <div class="article-news-thumb rounded mb-3">
@@ -108,6 +109,9 @@
                                 <h6 class='text-end fw-light mb-0'>{{ $latestNews->date }}</h6>
                             </div>
                         </a>
+                        <div class="text-end mt-3">
+                            <a class='fw-bold selengkapnya' href="/berita">Selengkapnya -></a>
+                        </div>
                     </div>
                 @endif
             </div>
